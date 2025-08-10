@@ -1,6 +1,23 @@
 return {
 	"stevearc/conform.nvim",
+	event = { "BufWritePre" },
+	cmd = { "ConformInfo" },
+	keys = {
+		{
+			"<leader>mp",
+			function()
+				local conform = require("conform")
 
+				conform.format({
+					-- lsp_fallback = true,
+					async = false,
+					timeout_ms = 500,
+				})
+			end,
+			mode = { "n", "v" },
+			desc = "Format manually",
+		},
+	},
 	opts = {
 		formatters_by_ft = {
 			c = { "clang-format" },
@@ -22,23 +39,6 @@ return {
 		format_on_save = {
 			-- lsp_format = "fallback",
 			timeout_ms = 500,
-		},
-	},
-
-	keys = {
-		{
-			"<leader>mp",
-			function()
-				local conform = require("conform")
-
-				conform.format({
-					-- lsp_fallback = true,
-					async = false,
-					timeout_ms = 500,
-				})
-			end,
-			mode = { "n", "v" },
-			desc = "Format manually",
 		},
 	},
 }
