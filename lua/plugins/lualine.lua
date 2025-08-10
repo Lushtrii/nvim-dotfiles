@@ -11,6 +11,7 @@ return {
 	-- 	},
 	-- },
 	config = function()
+		-- Copied from https://github.com/nvim-lualine/lualine.nvim/discussions/1153
 		local function formatter_status()
 			-- Check if 'conform' is available
 			local status, conform = pcall(require, "conform")
